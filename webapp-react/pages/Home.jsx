@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+
+import Banner from "../components/Banner";
+import FilmCard from "../components/FilmCard";
 
 export default function Home() {
     const movies = [
@@ -90,15 +92,8 @@ export default function Home() {
 
     return (
         <>
-            <div className="banner bg-secondary text-white py-4 mb-5">
-                <div className="container-lg">
-                    <h1>Movies' List</h1>
-                    <h3 className="text-muted">All classic movies</h3>
-                    <p className="lead">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, id!
-                    </p>
-                </div>
-            </div>
+
+            <Banner title="Movies' List" subtitle="All classic movies" leadtext="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, id!" />
 
             <section className="py-5">
                 <div className="container">
@@ -106,18 +101,7 @@ export default function Home() {
                         {movies.map((movie) => {
                             return (
                                 <div className="col" key={movie.id}>
-                                    <div className="film-card  h-100  p-2 shadow">
-                                        <div className="card-body">
-                                            <h4>{movie.titolo}</h4>
-                                            <p>directed by: <strong>{movie.director}</strong></p>
-                                            <p>{movie.genre}</p>
-                                            <p>{movie.abstract}</p>
-                                            <p>{movie.release_year}</p>
-                                            <div className="card-footer">
-                                                <Link to={`/movies/${movie.id}`} className="btn btn-primary">Read more</Link>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <FilmCard movie={movie} />
                                 </div>
                             )
                         })

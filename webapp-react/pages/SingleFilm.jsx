@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom"
+import Banner from "../components/Banner";
+import ReviewsCard from "../components/ReviewsCard";
 
 
 export default function SingleFilm() {
@@ -79,29 +81,13 @@ export default function SingleFilm() {
 
     return (
         <>
-            <div className="banner bg-secondary text-white py-4 mb-5">
-                <div className="container-lg">
-                    <h1>Movies' Reviews</h1>
-                    <h3 className="text-muted">All movies reviews</h3>
-                    <p className="lead">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, id!
-                    </p>
-                </div>
-            </div>
+
+            <Banner title="Movies' Reviews" subtitle="All movies reviews" leadtext="  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, id!" />
+
             <section className="reviews">
                 <div className="container">
                     {
-                        reviews.map((review) => {
-                            return (
-                                <div className="review card mb-3" key={review.id}>
-                                    <div className="card-body">
-                                        <p>{review.text}</p>
-                                        <p>by: <strong>{review.nome}</strong></p>
-                                        <p>voto: {review.voto}/5</p>
-                                    </div>
-                                </div>
-                            )
-                        })
+                        reviews.map((review) => <ReviewsCard key={review.id} review={review} />)
                     }
                 </div>
 
