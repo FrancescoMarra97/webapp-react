@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import FormReview from "../components/FormReview";
 import GlobalContext from "../contexts/GlobalContext";
 import Loader from "../components/Loader";
+import "./SingleFilm.css";
 
 export default function SingleFilm() {
     const { id } = useParams()
@@ -13,6 +14,7 @@ export default function SingleFilm() {
     const url = `http://localhost:3001/movies/${id}`
     const [movie, setMovie] = useState()
     const [success, setSuccess] = useState(null)
+
 
     useEffect(() => {
         setLoading(true)
@@ -26,6 +28,11 @@ export default function SingleFilm() {
             .catch(err => console.error(err))
     }, [id, success]
     )
+    useEffect(() => {
+        document.body.classList.add("single-film");
+        return () => document.body.classList.remove("single-film");
+    }, []);
+
     return (
         <>
             {loading ? <Loader /> : (

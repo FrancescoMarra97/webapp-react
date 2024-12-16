@@ -17,3 +17,39 @@ main {
     justify-content: center;
     min-height: calc(100vh - 340px);
 }
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.film-card {
+    padding: 1rem;
+    height: 320px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: lightgoldenrodyellow;
+    font-family: 'Playfair Display', serif;
+}
+
+.film-card .card-header h3 {
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.film-card .card-body {
+    height: 200px;
+}
+
+.film-card .card-footer {
+    border-top: 1px solid lightgrey;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    margin-top: 0.5rem;
+}
