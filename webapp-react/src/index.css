@@ -10,3 +10,10 @@ main {
 .bi-star-fill {
     color: gold;
 }
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 340px);
+}

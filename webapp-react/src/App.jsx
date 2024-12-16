@@ -3,6 +3,8 @@ import AppLayout from "../layout/AppLayout"
 import SingleFilm from "../pages/SingleFilm"
 import Home from "../pages/Home"
 import GlobalContext from "../contexts/GlobalContext"
+import { useState } from "react"
+
 function App() {
   const [loading, setLoading] = useState(false)
   const values = {
