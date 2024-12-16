@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function FormReview() {
-    const { id } = useParams()
+export default function FormReview({ movie_id, success, handleSuccess }) {
     const [name, setName] = useState('');
     const [vote, setVote] = useState('');
     const [text, SetText] = useState('');
@@ -10,7 +9,7 @@ export default function FormReview() {
     function HandleFormSubmit(e) {
         //e.preventDefault()
 
-        const url = `http://localhost:3001/movies/${id}/review`
+        const url = `http://localhost:3001/movies/${movie_id}/review`
 
 
         const formData = {
@@ -29,17 +28,21 @@ export default function FormReview() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-
+                if (data.success) {
+                    handleSuccess("Grazie per la tua recensione")
+                    setName("")
+                    setVote(0)
+                    SetText("")
+                }
             })
             .catch(err => console.log(err))
 
-        setName("")
-        setVote(0)
-        SetText("")
+
     }
 
     return (
         <div className="container">
+            {success && <div>{success}</div>}
             <div className="card mb-3">
                 <div className="card-body">
                     <form onSubmit={HandleFormSubmit}>

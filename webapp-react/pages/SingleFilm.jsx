@@ -3,7 +3,8 @@ import Banner from "../components/Banner";
 import ReviewsCard from "../components/ReviewsCard";
 import { useEffect, useState } from "react";
 import FormReview from "../components/FormReview";
-
+import GlobalContext from "../contexts/GlobalContext";
+import Loader from "../components/Loader";
 
 export default function SingleFilm() {
     const { id } = useParams()
@@ -11,6 +12,7 @@ export default function SingleFilm() {
 
     const url = `http://localhost:3001/movies/${id}`
     const [movie, setMovie] = useState()
+    const [success, setSuccess] = useState(null)
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -19,13 +21,13 @@ export default function SingleFilm() {
                 setMovie(data)
             })
             .catch(err => console.error(err))
-    }, []
+    }, [success]
     )
     return (
         <>
 
             <Banner title={movie?.title} subtitle={movie?.director} leadtext={movie?.abstract} />
-            <FormReview />
+            <FormReview movie_id={id} success={success} handleSuccess={setSuccess} />
             <section className="reviews">
                 <div className="container">
                     {
